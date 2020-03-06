@@ -9,20 +9,29 @@ import { HttpClient, HttpResponse, HttpHeaders, HttpRequest } from '@angular/com
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'my-app';
   constructor(private newService: CommonService, ) { }
   Repdata;
   valbutton = 'Save';
+  id: number;
+  name: string;
+  address: string;
+  appTest = 'тестовый вывод';
+  errorMessage: string;
 
   ngOnInit() {
-    this.newService.getUser().subscribe(data => this.Repdata = data);
+    this.newService.test();
+    this.newService.getUser().subscribe(data => console.log('data', data));
+    //this.newService.getUser().subscribe(data => this.Repdata = data);
+    console.log('this.Repdata', this.Repdata);
+    console.log('servisce started');
   }
 
-  onSave = function(user, isValid: boolean) {
+  onSave = (user, isValid: boolean) => {
     user.node = this.valbutton;
     this.newService.saveUser(user).subscribe(data => {
-      alert(data.data);
+      alert(data);
       this.ngOnInit();
     }
     , error => this.errorMessage = error)

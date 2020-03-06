@@ -9,6 +9,45 @@
   >
 </ag-grid-angular>
 
+<h1>{{ appTest }}</h1>
+
+<form #userForm="ngForm" (ngSubmit)="onSave(userForm.value, true)" novalidate>
+  <table border='1'>
+    <tr>
+      <td>name</td>
+      <td>
+        <input name="id" type="hidden" [(ngModel)]="id">
+        <input name="name" type="text" required [(ngModel)]="name">
+      </td>
+    </tr>
+    <tr>
+      <td>address</td>
+      <td>
+        <input name="address" type="text" required [(ngModel)]="address">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">        
+      </td>
+    </tr>
+  </table>
+</form>
+
+<table border='1'>
+  <tr>
+    <td>ID</td>
+    <td>name</td>
+    <td>Address</td>
+  </tr>
+  <tr *ngFor="let kk of Repdata;let ind = index">
+    <td>{{ind + 1}}</td>
+    <td>{{kk.name}}</td>
+    <td>{{kk.address}}</td>
+    <td><a (click)="edit(kk)" style="color:blueviolet">edit</a></td>
+    <td><a (click)="delete(kk._id)" style="color:blueviolet">delete</a></td>
+  </tr>
+</table>
+
 <style>
   :host {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";

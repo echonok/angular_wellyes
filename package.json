@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "mongo": "node src/app/server"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +26,7 @@
     "ag-grid-angular": "^22.1.1",
     "ag-grid-community": "^22.1.1",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.9.3",
     "rxjs": "^6.5.4",
